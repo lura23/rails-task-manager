@@ -1,0 +1,19 @@
+<h1>My Tasks</h1>
+
+<div>
+  <% @tasks.each do |task| %>
+
+<div>
+  <div class="checkbox">
+    <i class="fa fa<%= task.completed ? '-check' : ''%>-circle-o" aria-hidden="true"></i>
+  </div>
+  <h4 class="task-name"><%= link_to task.title, task_path(task.id) %></h4>
+  <%= link_to raw('<i class="fa fa-trash-o" class="trash" aria-hidden="true"></i>'), task_path(task.id), method: :delete,
+      data: { confirm: "Are you sure?" } %>
+
+</div>
+  <% end %>
+</div>
+
+<p><%= link_to "Add a new task", new_path %></p>
+
